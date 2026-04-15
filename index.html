@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLNP — Nettoyage de cuisines McDonald's à Lyon</title>
+  <meta name="description" content="SLNP assure le nettoyage quotidien des cuisines McDonald's à Lyon depuis 2013. Contrats de nettoyage en continu, protocoles HACCP, intervention 24h/24.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    /* ── TOKENS ──────────────────────────────────── */
+    :root {
+      --navy-950: #060E1C;
+      --navy-900: #0B1A2E;
+      --navy-800: #112038;
+      --navy-700: #1A2D4A;
+      --navy-600: #234060;
+      --gold-500: #B8902A;
+      --gold-400: #C9A84C;
+      --gold-300: #D9BE7A;
+      --off-white: #F7F8FA;
+      --gray-100: #EFF1F5;
+      --gray-200: #DDE0E8;
+      --gray-400: #8A93A3;
+      --gray-600: #4A5568;
+      --text-dark: #0B1A2E;
+    }
+    /* ── RESET ───────────────────────────────────── */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'DM Sans',sans-serif; color:var(--text-dark); background:#fff; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+    h1,h2,h3,h4,h5,h6 { font-family:'Outfit',sans-serif; }
+    img { display:block; max-width:100%; }
+    a { text-decoration:none; }
+    .container { max-width:1360px; margin:0 auto; padding:0 2.5rem; }
+    @media(max-width:768px){ .container{ padding:0 1.25rem; } }
+
+    /* ── REVEAL ──────────────────────────────────── */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1); }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .rd1{transition-delay:.08s} .rd2{transition-delay:.16s} .rd3{transition-delay:.24s}
+    .rd4{transition-delay:.32s} .rd5{transition-delay:.40s}
+
+    /* ── EYEBROW ─────────────────────────────────── */
+    .eyebrow { display:inline-flex; align-items:center; gap:.625rem; font-family:'Outfit',sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-500); margin-bottom:1.125rem; }
+    .eyebrow::before { content:''; display:block; width:1.75rem; height:1px; background:var(--gold-500); flex-shrink:0; }
+    .eyebrow--light { color:var(--gold-400); }
+    .eyebrow--light::before { background:var(--gold-400); }
+
+    /* ── TITLES ──────────────────────────────────── */
+    .section-title { font-size:clamp(1.9rem,3.2vw,2.75rem); font-weight:700; line-height:1.12; letter-spacing:-.028em; color:var(--navy-900); }
+    .section-title--white { color:#fff; }
+    .section-body { color:var(--gray-600); font-size:1rem; line-height:1.8; max-width:62ch; margin-top:1.125rem; }
+
+    /* ── BUTTONS ─────────────────────────────────── */
+    .btn { display:inline-flex; align-items:center; gap:.5rem; font-family:'Outfit',sans-serif; font-weight:600; font-size:.9rem; letter-spacing:.01em; padding:.875rem 2rem; border-radius:3px; border:1px solid transparent; cursor:pointer; transition:transform .18s cubic-bezier(.16,1,.3,1),background .18s,box-shadow .18s,border-color .18s; }
+    .btn:active { transform:scale(.98); }
+    .btn-gold { background:var(--gold-500); color:#fff; border-color:var(--gold-500); }
+    .btn-gold:hover { background:var(--gold-400); border-color:var(--gold-400); transform:translateY(-2px); box-shadow:0 8px 28px rgba(184,144,42,.28); }
+    .btn-ghost { background:transparent; color:#fff; border-color:rgba(255,255,255,.28); }
+    .btn-ghost:hover { border-color:rgba(255,255,255,.65); background:rgba(255,255,255,.07); }
+    .btn-outline { background:transparent; color:var(--navy-900); border-color:var(--navy-700); }
+    .btn-outline:hover { background:var(--navy-900); color:#fff; }
+
+    /* ══════════════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════════════ */
+    #navbar { position:fixed; top:0; left:0; right:0; z-index:200; padding:1.5rem 0; transition:padding .4s cubic-bezier(.16,1,.3,1),background .4s,border-color .4s; border-bottom:1px solid transparent; }
+    #navbar.scrolled { padding:.875rem 0; background:rgba(6,14,28,.95); backdrop-filter:blur(24px) saturate(1.3); border-bottom-color:rgba(255,255,255,.07); }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; }
+    .nav-logo { font-family:'Outfit',sans-serif; font-weight:800; font-size:1.25rem; letter-spacing:-.04em; color:#fff; }
+    .nav-logo span { color:var(--gold-400); }
+    .nav-links { display:flex; align-items:center; gap:2.5rem; list-style:none; }
+    .nav-links a { font-size:.875rem; color:rgba(255,255,255,.65); letter-spacing:.01em; transition:color .2s; }
+    .nav-links a:hover { color:#fff; }
+    .nav-cta { font-family:'Outfit',sans-serif; font-weight:600; font-size:.85rem; background:var(--gold-500); color:#fff !important; padding:.5rem 1.25rem; border-radius:3px; transition:background .18s,transform .18s; }
+    .nav-cta:hover { background:var(--gold-400) !important; transform:translateY(-1px); }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:rgba(255,255,255,.8); border-radius:2px; }
+    @media(max-width:900px){ .nav-links{display:none;} .hamburger{display:flex;} }
+
+    /* ══════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════ */
+    .hero { position:relative; min-height:100dvh; display:flex; align-items:flex-end; padding-bottom:0; overflow:hidden; }
+    .hero-bg {
+      position:absolute; inset:0;
+      background-image:url('images/Fast_food_kitchen_202604151333.jpeg');
+      background-size:cover; background-position:center 35%;
+      will-change:transform; transform:scale(1.06);
+      transition:transform 9s cubic-bezier(.16,1,.3,1);
+    }
+    .hero-bg.loaded { transform:scale(1); }
+    .hero-overlay {
+      position:absolute; inset:0;
+      background:
+        linear-gradient(105deg, rgba(6,14,28,.95) 0%, rgba(6,14,28,.82) 40%, rgba(6,14,28,.38) 70%, rgba(6,14,28,.08) 100%),
+        linear-gradient(to top, rgba(6,14,28,.85) 0%, rgba(6,14,28,.1) 45%);
+    }
+    .hero-body { position:relative; z-index:10; width:100%; padding-bottom:0; }
+    .hero-content { max-width:720px; padding-bottom:3rem; }
+    .hero-eyebrow { display:inline-flex; align-items:center; gap:.625rem; font-family:'Outfit',sans-serif; font-size:.7rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-400); margin-bottom:1.5rem; }
+    .hero-eyebrow::before { content:''; display:block; width:1.75rem; height:1px; background:var(--gold-400); }
+    .hero h1 { font-size:clamp(2.5rem,5vw,4.5rem); font-weight:700; line-height:1.05; letter-spacing:-.035em; color:#fff; margin-bottom:1.5rem; }
+    .hero h1 em { font-style:normal; color:var(--gold-400); }
+    .hero-sub { color:rgba(255,255,255,.68); font-size:1.05rem; line-height:1.78; max-width:540px; margin-bottom:2.25rem; }
+    .hero-ctas { display:flex; align-items:center; gap:.875rem; flex-wrap:wrap; margin-bottom:2.75rem; }
+
+    /* Strip McDonald's restaurants dans le hero */
+    .hero-restaurants-strip {
+      position:relative; z-index:10;
+      border-top:1px solid rgba(255,255,255,.08);
+      background:rgba(6,14,28,.6);
+      backdrop-filter:blur(12px);
+      padding:1rem 0;
+    }
+    .hrs-inner { display:flex; align-items:center; }
+    .hrs-label {
+      flex-shrink:0;
+      padding:0 2rem 0 0;
+      border-right:1px solid rgba(255,255,255,.1);
+      margin-right:2rem;
+      color:rgba(255,255,255,.35);
+      font-family:'Outfit',sans-serif;
+      font-size:.65rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+      white-space:nowrap;
+      line-height:1.4;
+    }
+    .hrs-label strong { display:block; color:var(--gold-400); font-size:.7rem; letter-spacing:.14em; }
+    .hrs-overflow { overflow:hidden; flex:1; }
+    .hrs-track {
+      display:flex; gap:0; width:max-content;
+      animation:hrsScroll 35s linear infinite;
+    }
+    .hrs-track:hover { animation-play-state:paused; }
+    @keyframes hrsScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .hrs-item {
+      display:inline-flex; align-items:center; gap:.75rem;
+      padding:0 2rem;
+      color:rgba(255,255,255,.58);
+      font-family:'Outfit',sans-serif; font-size:.8rem; font-weight:600; letter-spacing:.04em;
+      white-space:nowrap;
+      transition:color .2s;
+    }
+    .hrs-item:hover { color:rgba(255,255,255,.9); }
+    .hrs-sep { width:1px; height:1rem; background:rgba(255,255,255,.12); flex-shrink:0; }
+    @media(max-width:768px){
+      .hero-content { padding-bottom:2rem; }
+      .hrs-label { display:none; }
+      .hrs-item { font-size:.75rem; padding:0 1.5rem; }
+    }
+
+    /* ══════════════════════════════════════════════
+       STATS
+    ══════════════════════════════════════════════ */
+    .stats-bar { background:var(--navy-950); padding:3rem 0; }
+    .stats-inner { display:grid; grid-template-columns:repeat(4,1fr); border:1px solid rgba(255,255,255,.07); }
+    .stat-block { padding:2rem 2.5rem; border-right:1px solid rgba(255,255,255,.07); position:relative; }
+    .stat-block:last-child { border-right:none; }
+    .stat-block::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--gold-500); transform:scaleX(0); transition:transform .4s cubic-bezier(.16,1,.3,1); transform-origin:left; }
+    .stat-block:hover::after { transform:scaleX(1); }
+    .stat-num { font-family:'Outfit',sans-serif; font-weight:800; font-size:2.375rem; color:var(--gold-400); line-height:1; letter-spacing:-.03em; margin-bottom:.5rem; }
+    .stat-label { color:rgba(255,255,255,.42); font-size:.82rem; line-height:1.45; }
+    @media(max-width:768px){ .stats-inner{grid-template-columns:1fr 1fr;} .stat-block:nth-child(2){border-right:none;} }
+    @media(max-width:480px){ .stats-inner{grid-template-columns:1fr;} .stat-block{border-right:none;border-bottom:1px solid rgba(255,255,255,.07);} }
+
+    /* ══════════════════════════════════════════════
+       À PROPOS
+    ══════════════════════════════════════════════ */
+    .about { padding:7rem 0; background:var(--off-white); }
+    .about-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:5.5rem; align-items:center; }
+    .about-features { margin-top:2rem; display:flex; flex-direction:column; gap:.875rem; }
+    .about-feature { display:flex; align-items:flex-start; gap:.875rem; color:var(--gray-600); font-size:.95rem; line-height:1.5; }
+    .feature-bullet { width:5px; height:5px; border-radius:50%; background:var(--gold-500); flex-shrink:0; margin-top:.45rem; }
+    .about-cta-row { margin-top:2.5rem; display:flex; gap:1rem; flex-wrap:wrap; }
+    .about-image-wrap { position:relative; }
+    .about-img { width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:2px; }
+    .about-badge { position:absolute; bottom:-1.5rem; left:-1.5rem; background:var(--navy-900); padding:1.5rem 1.875rem; border-radius:2px; min-width:165px; border:1px solid rgba(255,255,255,.06); }
+    .about-badge-num { font-family:'Outfit',sans-serif; font-weight:800; font-size:2.5rem; color:var(--gold-400); line-height:1; letter-spacing:-.04em; margin-bottom:.3rem; }
+    .about-badge-label { color:rgba(255,255,255,.48); font-size:.78rem; line-height:1.45; }
+    @media(max-width:900px){ .about-grid{grid-template-columns:1fr;gap:3rem;} .about-badge{display:none;} }
+
+    /* ══════════════════════════════════════════════
+       ÉTABLISSEMENTS ENTRETENUS
+    ══════════════════════════════════════════════ */
+    .terrain { padding:7rem 0; background:var(--navy-950); }
+    .terrain-header { margin-bottom:4rem; }
+    .terrain-header .section-body { color:rgba(255,255,255,.5); margin-top:.875rem; }
+
+    /* Compteur fort */
+    .terrain-kpi {
+      display:inline-flex; align-items:center; gap:1rem;
+      background:rgba(184,144,42,.08);
+      border:1px solid rgba(184,144,42,.2);
+      padding:1rem 1.75rem;
+      border-radius:3px;
+      margin-bottom:3.5rem;
+    }
+    .terrain-kpi-num { font-family:'Outfit',sans-serif; font-weight:800; font-size:2rem; color:var(--gold-400); letter-spacing:-.03em; line-height:1; }
+    .terrain-kpi-text { color:rgba(255,255,255,.6); font-size:.9rem; line-height:1.45; }
+    .terrain-kpi-text strong { display:block; color:#fff; font-size:.95rem; }
+
+    /* Grille restaurants */
+    .restaurants-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5px; background:rgba(255,255,255,.06); }
+    .resto-card { background:rgba(255,255,255,.03); padding:1.625rem 1.75rem; position:relative; transition:background .3s; overflow:hidden; }
+    .resto-card:hover { background:rgba(255,255,255,.07); }
+    .resto-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--gold-500); transform:scaleY(0); transition:transform .3s cubic-bezier(.16,1,.3,1); transform-origin:bottom; }
+    .resto-card:hover::before { transform:scaleY(1); }
+    .resto-number { font-family:'Outfit',sans-serif; font-size:.65rem; font-weight:700; letter-spacing:.12em; color:rgba(184,144,42,.5); text-transform:uppercase; margin-bottom:.625rem; }
+    .resto-name { font-family:'Outfit',sans-serif; font-weight:700; font-size:1rem; color:#fff; letter-spacing:-.01em; line-height:1.2; margin-bottom:.25rem; }
+    .resto-tag { font-size:.75rem; color:rgba(255,255,255,.35); }
+    /* 11e item centré */
+    .resto-card:nth-child(11) { grid-column:2/4; }
+    @media(max-width:900px){ .restaurants-grid{grid-template-columns:repeat(2,1fr);} .resto-card:nth-child(11){grid-column:span 1;} }
+    @media(max-width:480px){ .restaurants-grid{grid-template-columns:1fr;} }
+
+    /* Notice HACCP */
+    .terrain-notice { margin-top:2.5rem; display:flex; align-items:flex-start; gap:1rem; padding:1.5rem 2rem; background:rgba(255,255,255,.03); border-left:2px solid var(--gold-500); }
+    .terrain-notice svg { color:var(--gold-400); flex-shrink:0; margin-top:.1rem; }
+    .terrain-notice-text { color:rgba(255,255,255,.48); font-size:.875rem; line-height:1.72; }
+    .terrain-notice-text strong { color:rgba(255,255,255,.82); }
+
+    /* ══════════════════════════════════════════════
+       SERVICES
+    ══════════════════════════════════════════════ */
+    .services { padding:7rem 0; background:#fff; }
+    .services-header { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:end; margin-bottom:3.5rem; }
+    .services-header-note { color:var(--gray-600); font-size:.9rem; line-height:1.7; max-width:32ch; text-align:right; }
+    .services-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5px; background:var(--gray-200); border:1.5px solid var(--gray-200); }
+    .svc-card:nth-child(1) { grid-column:span 2; }
+    .svc-card:nth-child(6) { grid-column:span 2; }
+    .svc-card { background:#fff; padding:2.625rem 2.5rem; position:relative; overflow:hidden; transition:background .32s cubic-bezier(.16,1,.3,1); }
+    .svc-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--gold-500); transform:scaleX(0); transform-origin:left; transition:transform .32s cubic-bezier(.16,1,.3,1); }
+    .svc-card:hover { background:var(--navy-950); }
+    .svc-card:hover::after { transform:scaleX(1); }
+    .svc-icon { width:2.125rem; height:2.125rem; color:var(--gold-500); margin-bottom:1.5rem; transition:color .3s; }
+    .svc-card:hover .svc-icon { color:var(--gold-400); }
+    .svc-name { font-family:'Outfit',sans-serif; font-weight:600; font-size:1.05rem; letter-spacing:-.01em; color:var(--navy-900); margin-bottom:.625rem; transition:color .3s; }
+    .svc-card:hover .svc-name { color:#fff; }
+    .svc-desc { color:var(--gray-600); font-size:.875rem; line-height:1.7; transition:color .3s; }
+    .svc-card:hover .svc-desc { color:rgba(255,255,255,.5); }
+    .svc-card:nth-child(1) .svc-inner { display:grid; grid-template-columns:1fr auto; gap:1.5rem; align-items:start; }
+    .svc-tag { font-family:'Outfit',sans-serif; font-size:.65rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-500); background:rgba(184,144,42,.08); padding:.3rem .75rem; border-radius:2px; white-space:nowrap; transition:background .3s,color .3s; }
+    .svc-card:hover .svc-tag { background:rgba(201,168,76,.15); color:var(--gold-300); }
+    @media(max-width:900px){ .services-grid{grid-template-columns:1fr 1fr;} .svc-card{grid-column:span 1!important;} .svc-card:nth-child(1) .svc-inner{grid-template-columns:1fr;} .services-header{grid-template-columns:1fr;gap:1.5rem;} .services-header-note{text-align:left;} }
+    @media(max-width:600px){ .services-grid{grid-template-columns:1fr;} }
+
+    /* ══════════════════════════════════════════════
+       AVANT / APRÈS
+    ══════════════════════════════════════════════ */
+    .proof { padding:7rem 0; background:var(--navy-950); }
+    .proof-header { margin-bottom:3.5rem; }
+    .proof-header .section-body { color:rgba(255,255,255,.48); }
+
+    .proof-blocks { display:flex; flex-direction:column; gap:2px; }
+    .proof-block { display:grid; grid-template-columns:1fr 1fr; gap:2px; background:rgba(255,255,255,.05); }
+    .proof-block-label {
+      padding:.875rem 0 1.5rem;
+      font-family:'Outfit',sans-serif; font-weight:700; font-size:.72rem;
+      letter-spacing:.14em; text-transform:uppercase;
+      color:rgba(255,255,255,.3);
+    }
+    .proof-card { position:relative; overflow:hidden; }
+    .proof-card img { width:100%; aspect-ratio:16/10; object-fit:cover; display:block; transition:transform .6s cubic-bezier(.16,1,.3,1),filter .6s; filter:brightness(.88) saturate(.85); }
+    .proof-card:hover img { transform:scale(1.04); filter:brightness(1) saturate(1); }
+    .proof-badge {
+      position:absolute; top:1.25rem; left:1.25rem;
+      font-family:'Outfit',sans-serif; font-size:.68rem; font-weight:700;
+      letter-spacing:.14em; text-transform:uppercase; color:#fff;
+      background:rgba(6,14,28,.85); backdrop-filter:blur(8px);
+      padding:.35rem .875rem; border-radius:2px; border:1px solid rgba(255,255,255,.12);
+    }
+    .proof-badge--after { background:rgba(184,144,42,.85); border-color:rgba(184,144,42,.4); }
+    .proof-full-card { position:relative; overflow:hidden; border-radius:2px; }
+    .proof-full-card img { width:100%; display:block; object-fit:cover; max-height:420px; transition:transform .6s cubic-bezier(.16,1,.3,1); }
+    .proof-full-card:hover img { transform:scale(1.02); }
+    .proof-cta { margin-top:3rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+    @media(max-width:600px){ .proof-block{grid-template-columns:1fr;} }
+
+    /* ══════════════════════════════════════════════
+       ÉQUIPE
+    ══════════════════════════════════════════════ */
+    .team { padding:7rem 0; background:var(--off-white); }
+    .team-grid { display:grid; grid-template-columns:1.15fr 1fr; gap:5.5rem; align-items:center; }
+    .team-img-wrap { position:relative; }
+    .team-img { width:100%; aspect-ratio:16/10; object-fit:cover; object-position:center top; border-radius:2px; }
+    .team-badge { position:absolute; bottom:-1.25rem; right:-1.25rem; background:var(--navy-900); padding:1.375rem 1.75rem; border-radius:2px; border:1px solid rgba(255,255,255,.06); text-align:center; }
+    .team-badge-num { font-family:'Outfit',sans-serif; font-weight:800; font-size:1.875rem; color:var(--gold-400); letter-spacing:-.03em; line-height:1; margin-bottom:.25rem; }
+    .team-badge-label { color:rgba(255,255,255,.45); font-size:.75rem; }
+    .team-features { margin-top:2rem; display:flex; flex-direction:column; gap:.875rem; }
+    .team-feature { display:flex; align-items:flex-start; gap:.875rem; color:var(--gray-600); font-size:.9rem; line-height:1.5; }
+    .team-feature-dot { width:5px; height:5px; border-radius:50%; background:var(--gold-500); flex-shrink:0; margin-top:.45rem; }
+    @media(max-width:900px){ .team-grid{grid-template-columns:1fr;gap:3rem;} .team-badge{display:none;} }
+
+    /* ══════════════════════════════════════════════
+       GARANTIES
+    ══════════════════════════════════════════════ */
+    .garanties { padding:6.5rem 0; background:#fff; }
+    .garanties-grid { display:grid; grid-template-columns:repeat(4,1fr); margin-top:3.5rem; }
+    .garantie-item { padding:2.375rem; border-right:1px solid var(--gray-200); border-bottom:1px solid var(--gray-200); }
+    .garantie-item:nth-child(4n) { border-right:none; }
+    .garantie-item:nth-last-child(-n+4) { border-bottom:none; }
+    .garantie-icon { width:1.875rem; height:1.875rem; color:var(--gold-500); margin-bottom:1.25rem; }
+    .garantie-title { font-family:'Outfit',sans-serif; font-weight:600; font-size:.95rem; color:var(--navy-900); margin-bottom:.5rem; }
+    .garantie-desc { color:var(--gray-600); font-size:.85rem; line-height:1.65; }
+    @media(max-width:900px){ .garanties-grid{grid-template-columns:1fr 1fr;} .garantie-item:nth-child(2n){border-right:none;} .garantie-item{border-bottom:1px solid var(--gray-200);} }
+    @media(max-width:480px){ .garanties-grid{grid-template-columns:1fr;} .garantie-item{border-right:none;} }
+
+    /* ══════════════════════════════════════════════
+       TÉMOIGNAGES
+    ══════════════════════════════════════════════ */
+    .testimonials { padding:7rem 0; background:var(--off-white); }
+    .testi-header { margin-bottom:3.5rem; }
+    .testi-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:2rem; }
+    .testi-featured { background:var(--navy-900); padding:3.25rem; border-radius:2px; position:relative; overflow:hidden; display:flex; flex-direction:column; }
+    .testi-featured::before { content:'"'; position:absolute; top:-1rem; right:2rem; font-family:'Outfit',sans-serif; font-size:13rem; font-weight:800; color:rgba(255,255,255,.04); line-height:1; pointer-events:none; }
+    .stars { color:var(--gold-400); letter-spacing:2px; font-size:.875rem; margin-bottom:1.25rem; }
+    .testi-featured .quote { color:rgba(255,255,255,.75); font-size:.975rem; line-height:1.82; font-style:italic; flex-grow:1; margin-bottom:2.25rem; }
+    .testi-author { display:flex; align-items:center; gap:1rem; }
+    .testi-avatar { width:2.75rem; height:2.75rem; border-radius:50%; object-fit:cover; flex-shrink:0; border:2px solid rgba(255,255,255,.12); }
+    .testi-name { font-family:'Outfit',sans-serif; font-weight:600; font-size:.875rem; color:#fff; }
+    .testi-role { color:rgba(255,255,255,.4); font-size:.775rem; margin-top:.125rem; }
+    .testi-stack { display:flex; flex-direction:column; gap:1.75rem; }
+    .testi-card { background:#fff; padding:2.125rem 2.25rem; border:1px solid var(--gray-200); border-radius:2px; flex:1; transition:border-color .3s,box-shadow .3s,transform .3s cubic-bezier(.16,1,.3,1); }
+    .testi-card:hover { border-color:var(--navy-600); box-shadow:0 14px 40px -8px rgba(11,26,46,.1); transform:translateY(-3px); }
+    .testi-card .quote { color:var(--gray-600); font-size:.875rem; line-height:1.75; font-style:italic; margin-bottom:1.375rem; }
+    .testi-card .testi-name { color:var(--navy-900); }
+    .testi-card .testi-role { color:var(--gray-400); }
+    @media(max-width:900px){ .testi-grid{grid-template-columns:1fr;} }
+
+    /* ══════════════════════════════════════════════
+       PROCESSUS
+    ══════════════════════════════════════════════ */
+    .process { padding:7rem 0; background:var(--navy-900); }
+    .process-header { margin-bottom:4.5rem; }
+    .process-grid { display:grid; grid-template-columns:repeat(3,1fr); position:relative; }
+    .process-grid::before { content:''; position:absolute; top:2.625rem; left:calc(100%/6); right:calc(100%/6); height:1px; background:rgba(255,255,255,.1); }
+    .process-step { padding:0 3rem 0 0; }
+    .process-step:last-child { padding-right:0; }
+    .step-circle { width:5.25rem; height:5.25rem; border-radius:50%; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.03); display:flex; align-items:center; justify-content:center; margin-bottom:2rem; transition:border-color .3s,background .3s; }
+    .process-step:hover .step-circle { border-color:var(--gold-400); background:rgba(184,144,42,.08); }
+    .step-num { font-family:'Outfit',sans-serif; font-weight:700; font-size:1.25rem; color:var(--gold-400); }
+    .step-title { font-family:'Outfit',sans-serif; font-weight:600; font-size:1rem; color:#fff; margin-bottom:.625rem; }
+    .step-desc { color:rgba(255,255,255,.42); font-size:.875rem; line-height:1.72; }
+    @media(max-width:768px){ .process-grid{grid-template-columns:1fr;gap:3rem;} .process-grid::before{display:none;} .process-step{padding:0;} }
+
+    /* ══════════════════════════════════════════════
+       CTA FINAL
+    ══════════════════════════════════════════════ */
+    .cta-section { padding:8rem 0; position:relative; overflow:hidden; }
+    .cta-bg { position:absolute; inset:0; background-image:url('images/Photographie_ultra_réaliste_202604151348.jpeg'); background-size:cover; background-position:center; filter:brightness(.18) saturate(.6); }
+    .cta-overlay { position:absolute; inset:0; background:linear-gradient(100deg,rgba(6,14,28,.97) 0%,rgba(6,14,28,.88) 50%,rgba(6,14,28,.75) 100%); }
+    /* CTA 2-col layout */
+    .cta-inner { position:relative; z-index:10; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+    .cta-title { font-family:'Outfit',sans-serif; font-weight:700; font-size:clamp(1.9rem,3.2vw,2.75rem); letter-spacing:-.03em; line-height:1.1; color:#fff; margin-bottom:1.125rem; }
+    .cta-sub { color:rgba(255,255,255,.48); font-size:1rem; line-height:1.75; margin-bottom:2.5rem; }
+    .cta-btns { display:flex; flex-direction:column; align-items:flex-start; gap:.75rem; }
+    .cta-btns .btn { width:100%; justify-content:center; }
+    .cta-contact-strip { margin-top:3rem; padding-top:2.5rem; border-top:1px solid rgba(255,255,255,.07); display:flex; flex-direction:column; gap:1.25rem; }
+    .contact-item { display:flex; align-items:flex-start; gap:.875rem; }
+    .contact-item svg { width:1.125rem; height:1.125rem; color:var(--gold-400); flex-shrink:0; margin-top:.1rem; }
+    .contact-item-label { font-family:'Outfit',sans-serif; font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.28); margin-bottom:.25rem; }
+    .contact-item-value { color:rgba(255,255,255,.68); font-size:.875rem; line-height:1.5; }
+    .contact-item-value a { color:inherit; transition:color .2s; }
+    .contact-item-value a:hover { color:#fff; }
+
+    /* Contact form */
+    .contact-form-wrap { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:3px; padding:2.75rem; }
+    .form-head-title { font-family:'Outfit',sans-serif; font-weight:700; font-size:1.35rem; letter-spacing:-.02em; color:#fff; margin-bottom:.5rem; }
+    .form-head-sub { color:rgba(255,255,255,.45); font-size:.875rem; line-height:1.65; margin-bottom:2rem; }
+    .form-row-2 { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .form-field { display:flex; flex-direction:column; gap:.45rem; margin-bottom:1rem; }
+    .form-field:last-of-type { margin-bottom:0; }
+    .form-label { font-family:'Outfit',sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.38); }
+    .form-input, .form-textarea {
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:3px;
+      color:#fff;
+      font-family:'DM Sans',sans-serif;
+      font-size:.9rem;
+      padding:.75rem 1rem;
+      outline:none;
+      transition:border-color .2s, background .2s;
+      width:100%;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color:rgba(255,255,255,.25); }
+    .form-input:focus, .form-textarea:focus { border-color:var(--gold-400); background:rgba(255,255,255,.08); }
+    .form-textarea { min-height:120px; resize:vertical; line-height:1.6; }
+    .form-submit {
+      width:100%;
+      margin-top:1.375rem;
+      background:var(--gold-500);
+      color:#fff;
+      border:none;
+      border-radius:3px;
+      font-family:'Outfit',sans-serif;
+      font-weight:700;
+      font-size:.9rem;
+      letter-spacing:.02em;
+      padding:.9rem 1.5rem;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:.5rem;
+      transition:background .18s, transform .18s, box-shadow .18s;
+    }
+    .form-submit:hover { background:var(--gold-400); transform:translateY(-2px); box-shadow:0 8px 24px rgba(184,144,42,.3); }
+    .form-submit:active { transform:scale(.98); }
+    .form-submit:disabled { opacity:.6; cursor:not-allowed; transform:none; box-shadow:none; }
+    .form-note { color:rgba(255,255,255,.25); font-size:.75rem; margin-top:.875rem; text-align:center; line-height:1.5; }
+    /* Success state */
+    .form-success-msg { display:none; text-align:center; padding:2.5rem 1rem; }
+    .form-success-msg svg { color:var(--gold-400); margin:0 auto 1rem; }
+    .form-success-msg .success-title { font-family:'Outfit',sans-serif; font-weight:700; font-size:1.1rem; color:#fff; margin-bottom:.5rem; }
+    .form-success-msg .success-sub { color:rgba(255,255,255,.48); font-size:.875rem; line-height:1.6; }
+    /* Error */
+    .form-field-error { border-color:rgba(239,68,68,.6) !important; }
+    .field-error-msg { color:rgba(239,68,68,.9); font-size:.75rem; margin-top:.25rem; display:none; }
+
+    @media(max-width:1024px){ .cta-inner{gap:3.5rem;} }
+    @media(max-width:900px){
+      .cta-inner{grid-template-columns:1fr;gap:3.5rem;}
+      .cta-btns .btn{width:auto;}
+      .cta-btns{flex-direction:row;flex-wrap:wrap;}
+    }
+    @media(max-width:560px){ .form-row-2{grid-template-columns:1fr;} }
+
+    /* ══════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════ */
+    footer { background:var(--navy-950); border-top:1px solid rgba(255,255,255,.06); padding:4.5rem 0 2.25rem; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1.4fr; gap:3.5rem; margin-bottom:3.5rem; }
+    .footer-logo { font-family:'Outfit',sans-serif; font-weight:800; font-size:1.25rem; letter-spacing:-.04em; color:#fff; margin-bottom:.875rem; }
+    .footer-logo span { color:var(--gold-400); }
+    .footer-tagline { color:rgba(255,255,255,.32); font-size:.85rem; line-height:1.65; max-width:280px; }
+    .footer-col-head { font-family:'Outfit',sans-serif; font-size:.68rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.25); margin-bottom:1.375rem; }
+    .footer-links { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+    .footer-links a { color:rgba(255,255,255,.42); font-size:.875rem; transition:color .2s; }
+    .footer-links a:hover { color:rgba(255,255,255,.9); }
+    .footer-contact-row { display:flex; align-items:flex-start; gap:.75rem; margin-bottom:.875rem; }
+    .footer-contact-row svg { width:1rem; height:1rem; color:var(--gold-400); flex-shrink:0; margin-top:.125rem; }
+    .footer-contact-row span { color:rgba(255,255,255,.42); font-size:.85rem; line-height:1.55; }
+    .footer-contact-row a { color:inherit; transition:color .2s; }
+    .footer-contact-row a:hover { color:rgba(255,255,255,.9); }
+    .footer-bottom { padding-top:2rem; border-top:1px solid rgba(255,255,255,.06); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.75rem; }
+    .footer-copy { color:rgba(255,255,255,.18); font-size:.78rem; }
+    .footer-cert { display:flex; align-items:center; gap:.5rem; color:rgba(255,255,255,.18); font-size:.78rem; }
+    .footer-cert-dot { width:5px; height:5px; background:var(--gold-500); border-radius:50%; }
+    @media(max-width:900px){ .footer-grid{grid-template-columns:1fr 1fr;} }
+    @media(max-width:560px){ .footer-grid{grid-template-columns:1fr;gap:2.5rem;} }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAVBAR ════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">SLNP<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#terrain">Établissements</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#team">Équipe</a></li>
+          <li><a href="#contact" class="nav-cta">Devis en 24h</a></li>
+        </ul>
+        <button class="hamburger" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ══════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-body">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-eyebrow reveal">SLNP &bull; Nettoyage et désinfection en milieu alimentaire</div>
+          <h1 class="reveal rd1">
+            SLNP, là où la propreté<br>rencontre la <em>perfection</em>
+          </h1>
+          <p class="hero-sub reveal rd2">
+            Nettoyage et désinfection de cuisines professionnelles, franchises et établissements de restauration en activité. Protocoles HACCP, interventions régulières, réactivité nationale.
+          </p>
+          <div class="hero-ctas reveal rd3">
+            <a href="mailto:contact@slnp.eu?subject=Demande%20de%20devis&body=Bonjour%2C%0A%0ANous%20souhaitons%20obtenir%20un%20devis%20pour%20une%20prestation%20de%20nettoyage.%0A%0AEntreprise%20%3A%0AVille%20%3A%0AT%C3%A9l%C3%A9phone%20%3A%0ABesoin%20%3A%0A%0ACordialement%2C" class="btn btn-gold">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Demander un devis en 24h
+            </a>
+            <a href="tel:+33763059643" class="btn btn-ghost">Contact direct</a>
+          </div>
+        </div>
+      </div>
+      <!-- Strip restaurants McDonald's -->
+      <div class="hero-restaurants-strip reveal rd4">
+        <div class="container">
+          <div class="hrs-inner">
+            <div class="hrs-label">Restaurants<strong>entretenus</strong></div>
+            <div class="hrs-overflow">
+              <div class="hrs-track" id="hrsTrack">
+                <!-- set 1 -->
+                <span class="hrs-item">McDonald's République</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Herriot</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Opéra</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Charcot</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Vaise</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Champagne</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Civrieux</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Genay</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Craponne</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Tassin</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Victor Hugo</span><span class="hrs-sep"></span>
+                <!-- set 2 (boucle) -->
+                <span class="hrs-item">McDonald's République</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Herriot</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Opéra</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Charcot</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Vaise</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Champagne</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Civrieux</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Genay</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Craponne</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Tassin</span><span class="hrs-sep"></span>
+                <span class="hrs-item">McDonald's Victor Hugo</span><span class="hrs-sep"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ STATS ════════════════════════════════════════════ -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat-block">
+          <div class="stat-num"><span data-count="11" data-suffix="">0</span></div>
+          <div class="stat-label">Restaurants McDonald's<br>entretenus à Lyon</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num"><span data-count="10" data-suffix="+">0</span></div>
+          <div class="stat-label">Années d'expérience<br>en milieu alimentaire</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">24h/24</div>
+          <div class="stat-label">Disponibilité<br>urgences incluses</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Conformité HACCP<br>garantie à chaque passage</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ À PROPOS ════════════════════════════════════════ -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="eyebrow">Qui sommes-nous</div>
+          <h2 class="section-title">Partenaire de nettoyage des cuisines McDonald's à Lyon depuis 2013</h2>
+          <p class="section-body">
+            SLNP assure le nettoyage quotidien de cuisines de restauration rapide en activité. Nous intervenons chaque nuit dans des restaurants McDonald's de la région lyonnaise avec des protocoles rigoureux, des équipes formées et une disponibilité sans faille.
+          </p>
+          <div class="about-features">
+            <div class="about-feature"><div class="feature-bullet"></div><span>Nettoyage des zones critiques : grill, friteuses, plonge, hottes</span></div>
+            <div class="about-feature"><div class="feature-bullet"></div><span>Protocoles conformes aux exigences HACCP des franchises</span></div>
+            <div class="about-feature"><div class="feature-bullet"></div><span>Interventions nocturnes — aucune perturbation de l'activité</span></div>
+            <div class="about-feature"><div class="feature-bullet"></div><span>Contrats de nettoyage en continu, pas de prestations ponctuelles</span></div>
+            <div class="about-feature"><div class="feature-bullet"></div><span>Rapport d'intervention remis après chaque passage</span></div>
+          </div>
+          <div class="about-cta-row">
+            <a href="mailto:contact@slnp.eu?subject=Demande%20de%20devis&body=Bonjour%2C%0A%0ANous%20souhaitons%20obtenir%20un%20devis%20pour%20une%20prestation%20de%20nettoyage.%0A%0AEntreprise%20%3A%0AVille%20%3A%0AT%C3%A9l%C3%A9phone%20%3A%0ABesoin%20%3A%0A%0ACordialement%2C" class="btn btn-gold">Demander un devis en 24h</a>
+            <a href="#terrain" class="btn btn-outline">Voir nos établissements</a>
+          </div>
+        </div>
+        <div class="about-image-wrap reveal rd2">
+          <img src="images/Photographie_ultra_réaliste_202604151348.jpeg" alt="Cuisine professionnelle McDonald's entretenue par SLNP" class="about-img">
+          <div class="about-badge">
+            <div class="about-badge-num">11</div>
+            <div class="about-badge-label">Restaurants McDonald's<br>entretenus à Lyon</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ÉTABLISSEMENTS ENTRETENUS ══════════════════════ -->
+  <section class="terrain" id="terrain">
+    <div class="container">
+      <div class="terrain-header">
+        <div class="eyebrow eyebrow--light reveal">Établissements entretenus au quotidien</div>
+        <h2 class="section-title section-title--white reveal rd1">Contrats de nettoyage en continu<br>dans des restaurants McDonald's</h2>
+        <p class="section-body reveal rd2">Interventions nocturnes récurrentes dans les restaurants du réseau McDonald's de la région lyonnaise.</p>
+      </div>
+
+      <div class="terrain-kpi reveal">
+        <div class="terrain-kpi-num">11</div>
+        <div class="terrain-kpi-text">
+          <strong>Restaurants McDonald's</strong>
+          Entretenus de façon continue dans la région lyonnaise
+        </div>
+      </div>
+
+      <div class="restaurants-grid">
+        <div class="resto-card reveal rd1">
+          <div class="resto-number">01 — Lyon</div>
+          <div class="resto-name">McDonald's République</div>
+          <div class="resto-tag">Nettoyage quotidien</div>
+        </div>
+        <div class="resto-card reveal rd2">
+          <div class="resto-number">02 — Lyon</div>
+          <div class="resto-name">McDonald's Herriot</div>
+          <div class="resto-tag">Nettoyage quotidien</div>
+        </div>
+        <div class="resto-card reveal rd3">
+          <div class="resto-number">03 — Lyon</div>
+          <div class="resto-name">McDonald's Opéra</div>
+          <div class="resto-tag">Nettoyage quotidien</div>
+        </div>
+        <div class="resto-card reveal rd4">
+          <div class="resto-number">04 — Lyon</div>
+          <div class="resto-name">McDonald's Charcot</div>
+          <div class="resto-tag">Nettoyage quotidien</div>
+        </div>
+        <div class="resto-card reveal rd1">
+          <div class="resto-number">05 — Lyon 9e</div>
+          <div class="resto-name">McDonald's Vaise</div>
+          <div class="resto-tag">Nettoyage quotidien</div>
+        </div>
+        <div class="resto-card reveal rd2">
+          <div class="resto-number">06 — Lyon</div>
+          <div class="resto-name">McDonald's Champagne</div>
+          <div class="resto-tag">Nettoyage quotidien</div>
+        </div>
+        <div class="resto-card reveal rd3">
+          <div class="resto-number">07 — Civrieux</div>
+          <div class="resto-name">McDonald's Civrieux</div>
+          <div class="resto-tag">Nettoyage quotidien</div>
+        </div>
+        <div class="resto-card reveal rd4">
+          <div class="resto-number">08 — Genay</div>
+          <div class="resto-name">McDonald's Genay</div>
+          <div class="resto-tag">Nettoyage quotidien</div>
+        </div>
+        <div class="resto-card reveal rd1">
+          <div class="resto-number">09 — Craponne</div>
+          <div class="resto-name">McDonald's Craponne</div>
+          <div class="resto-tag">Nettoyage quotidien</div>
+        </div>
+        <div class="resto-card reveal rd2">
+          <div class="resto-number">10 — Tassin</div>
+          <div class="resto-name">McDonald's Tassin</div>
+          <div class="resto-tag">Nettoyage quotidien</div>
+        </div>
+        <div class="resto-card reveal rd3">
+          <div class="resto-number">11 — Lyon</div>
+          <div class="resto-name">McDonald's Victor Hugo</div>
+          <div class="resto-tag">Nettoyage quotidien</div>
+        </div>
+      </div>
+
+      <div class="terrain-notice reveal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="terrain-notice-text">
+          <strong>Interventions réalisées dans des restaurants du réseau McDonald's en activité, avec respect strict des exigences HACCP.</strong> SLNP n'est pas affilié à McDonald's Corporation. Ces références désignent les établissements franchisés dans lesquels nos équipes interviennent dans le cadre de contrats de nettoyage.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SERVICES ════════════════════════════════════════ -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-header reveal">
+        <div>
+          <div class="eyebrow">Nos prestations</div>
+          <h2 class="section-title">Nettoyage complet de chaque zone critique</h2>
+        </div>
+        <div>
+          <p class="services-header-note">Protocoles adaptés aux contraintes de la restauration rapide. Intervention nocturne systématique.</p>
+        </div>
+      </div>
+      <div class="services-grid">
+        <div class="svc-card reveal">
+          <div class="svc-inner">
+            <div>
+              <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <rect x="1" y="3" width="22" height="18" rx="2"/><path d="M2 7h20M2 12h20M2 17h20"/>
+              </svg>
+              <div class="svc-name">Nettoyage cuisine &amp; grill</div>
+              <div class="svc-desc">Dégraissage complet du grill, des plaques de cuisson, hottes et filtres. Protocole spécifique aux cuisines de restauration rapide en activité quotidienne.</div>
+            </div>
+            <div class="svc-tag">Zone critique</div>
+          </div>
+        </div>
+        <div class="svc-card reveal rd1">
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+          </svg>
+          <div class="svc-name">Friteuses &amp; bacs à graisse</div>
+          <div class="svc-desc">Vidange, nettoyage complet des friteuses et élimination des dépôts de graisses carbonisées. Résultat conforme aux normes HACCP.</div>
+        </div>
+        <div class="svc-card reveal rd2">
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M2 9h20M2 15h20"/><rect x="1" y="4" width="22" height="16" rx="2"/>
+          </svg>
+          <div class="svc-name">Plonge &amp; zone de lavage</div>
+          <div class="svc-desc">Nettoyage et désinfection complète de la zone de plonge, des bacs inox, des égouttoirs et des surfaces adjacentes.</div>
+        </div>
+        <div class="svc-card reveal rd1">
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <div class="svc-name">Désinfection des surfaces</div>
+          <div class="svc-desc">Plans de travail, murs carrelés, sols, plafonds. Désinfection complète avec traçabilité des produits utilisés.</div>
+        </div>
+        <div class="svc-card reveal rd2">
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>
+          </svg>
+          <div class="svc-name">Sols &amp; espaces communs</div>
+          <div class="svc-desc">Nettoyage haute pression, élimination des graisses au sol, désinfection des sanitaires et vestiaires du personnel.</div>
+        </div>
+        <div class="svc-card reveal rd3">
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+          </svg>
+          <div class="svc-name">Rapport &amp; traçabilité HACCP</div>
+          <div class="svc-desc">Compte-rendu d'intervention détaillé remis après chaque passage. Fiches produits disponibles pour vos dossiers de conformité sanitaire.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ AVANT / APRÈS ═══════════════════════════════════ -->
+  <section class="proof" id="proof">
+    <div class="container">
+      <div class="proof-header">
+        <div class="eyebrow eyebrow--light reveal">Résultats concrets</div>
+        <h2 class="section-title section-title--white reveal rd1">Avant / Après — zones critiques en cuisine</h2>
+        <p class="section-body reveal rd2">Résultats réels obtenus sur des équipements utilisés quotidiennement.</p>
+      </div>
+
+      <div class="proof-blocks">
+        <!-- Bloc 1 : Friteuse -->
+        <div class="reveal">
+          <div class="proof-block-label">— Friteuse professionnelle</div>
+          <div class="proof-full-card">
+            <img src="images/TRADUIS_MOI_LES_202604151402.jpeg" alt="Friteuse professionnelle avant et après nettoyage SLNP">
+          </div>
+        </div>
+        <!-- Bloc 2 : Grill -->
+        <div class="reveal rd1" style="margin-top:2px;">
+          <div class="proof-block-label">— Grill de cuisson</div>
+          <div class="proof-full-card">
+            <img src="images/TRADUIS_MOI_EN_202604151403.jpeg" alt="Grill de cuisson avant et après nettoyage SLNP">
+          </div>
+        </div>
+      </div>
+
+      <div class="proof-cta reveal">
+        <a href="mailto:contact@slnp.eu?subject=Demande%20de%20mise%20en%20place%20d%27un%20contrat&body=Bonjour%2C%0A%0ANous%20souhaitons%20%C3%A9changer%20au%20sujet%20de%20la%20mise%20en%20place%20d%27un%20contrat%20de%20nettoyage.%0A%0AEntreprise%20%3A%0AVille%20%3A%0AT%C3%A9l%C3%A9phone%20%3A%0ABesoin%20%3A%0A%0ACordialement%2C" class="btn btn-gold">Mettre en place un contrat de nettoyage</a>
+        <a href="tel:+33763059643" class="btn btn-ghost">Contact direct</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ÉQUIPE ══════════════════════════════════════════ -->
+  <section class="team" id="team">
+    <div class="container">
+      <div class="team-grid">
+        <div class="team-img-wrap reveal">
+          <img src="images/group_of_professional_202604151323.png" alt="Équipe SLNP spécialisée dans le nettoyage de cuisines McDonald's" class="team-img">
+          <div class="team-badge">
+            <div class="team-badge-num">+10</div>
+            <div class="team-badge-label">agents spécialisés</div>
+          </div>
+        </div>
+        <div class="reveal rd2">
+          <div class="eyebrow">Notre équipe</div>
+          <h2 class="section-title">Équipe spécialisée en restauration rapide</h2>
+          <p class="section-body">Des agents formés aux exigences des cuisines McDonald's, aux contraintes du nettoyage quotidien et aux protocoles HACCP.</p>
+          <div class="team-features">
+            <div class="team-feature"><div class="team-feature-dot"></div><span>Formation spécifique aux zones critiques : grill, friteuses, plonge</span></div>
+            <div class="team-feature"><div class="team-feature-dot"></div><span>Maîtrise des protocoles HACCP appliqués à la restauration rapide</span></div>
+            <div class="team-feature"><div class="team-feature-dot"></div><span>Interventions nocturnes — disponibles 7j/7</span></div>
+            <div class="team-feature"><div class="team-feature-dot"></div><span>Équipements professionnels adaptés à chaque type de surface</span></div>
+            <div class="team-feature"><div class="team-feature-dot"></div><span>Expérience terrain dans plus de 10 restaurants actifs</span></div>
+          </div>
+          <div style="margin-top:2.5rem;">
+            <a href="mailto:contact@slnp.eu?subject=Demande%20de%20mise%20en%20place%20d%27un%20contrat&body=Bonjour%2C%0A%0ANous%20souhaitons%20%C3%A9changer%20au%20sujet%20de%20la%20mise%20en%20place%20d%27un%20contrat%20de%20nettoyage.%0A%0AEntreprise%20%3A%0AVille%20%3A%0AT%C3%A9l%C3%A9phone%20%3A%0ABesoin%20%3A%0A%0ACordialement%2C" class="btn btn-gold">Mettre en place un contrat</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ GARANTIES ══════════════════════════════════════ -->
+  <section class="garanties" id="garanties">
+    <div class="container">
+      <div class="reveal">
+        <div class="eyebrow">Nos engagements</div>
+        <h2 class="section-title">Ce que nous garantissons à chaque contrat</h2>
+      </div>
+      <div class="garanties-grid">
+        <div class="garantie-item reveal rd1">
+          <svg class="garantie-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div class="garantie-title">Conformité HACCP</div>
+          <div class="garantie-desc">Protocoles conformes aux exigences sanitaires des franchises McDonald's. Zéro remarque lors des audits.</div>
+        </div>
+        <div class="garantie-item reveal rd2">
+          <svg class="garantie-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div class="garantie-title">Intervention nocturne</div>
+          <div class="garantie-desc">Nettoyage réalisé après fermeture, avant réouverture. Aucune interruption de votre service.</div>
+        </div>
+        <div class="garantie-item reveal rd3">
+          <svg class="garantie-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <div class="garantie-title">Rapport d'intervention</div>
+          <div class="garantie-desc">Compte-rendu détaillé après chaque passage. Traçabilité complète pour vos dossiers de conformité.</div>
+        </div>
+        <div class="garantie-item reveal rd4">
+          <svg class="garantie-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+          <div class="garantie-title">Produits homologués</div>
+          <div class="garantie-desc">Produits professionnels validés pour le contact alimentaire. Fiches techniques fournies sur demande.</div>
+        </div>
+        <div class="garantie-item reveal rd1">
+          <svg class="garantie-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <div class="garantie-title">Contrat continu</div>
+          <div class="garantie-desc">Prestations récurrentes, pas de missions ponctuelles. Votre restaurant est entretenu chaque jour selon un planning défini.</div>
+        </div>
+        <div class="garantie-item reveal rd2">
+          <svg class="garantie-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="garantie-title">Présence locale — Lyon</div>
+          <div class="garantie-desc">Société basée à Lyon. Réactivité maximale sur toute la région lyonnaise, urgences comprises.</div>
+        </div>
+        <div class="garantie-item reveal rd3">
+          <svg class="garantie-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          <div class="garantie-title">Équipes formées</div>
+          <div class="garantie-desc">Personnel formé spécifiquement aux exigences des cuisines de restauration rapide et aux protocoles des franchises.</div>
+        </div>
+        <div class="garantie-item reveal rd4">
+          <svg class="garantie-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <div class="garantie-title">Urgences 24h/24</div>
+          <div class="garantie-desc">Intervention d'urgence disponible nuit et week-end. Audit DDPP demain ? Nous intervenons ce soir.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TÉMOIGNAGES ════════════════════════════════════ -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="testi-header">
+        <div class="eyebrow reveal">Retours clients</div>
+        <h2 class="section-title reveal rd1">Ce que disent nos clients</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-featured reveal">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="quote">"Intervention rapide, travail propre, conforme aux exigences sanitaires. SLNP intervient chaque nuit dans notre cuisine depuis 2 ans. Aucun problème lors de nos audits, aucun retard, toujours disponibles. C'est ce qu'on attend d'un prestataire de nettoyage sérieux."</p>
+          <div class="testi-author">
+            <img src="https://picsum.photos/seed/gerant-mcd-lyon/80/80" alt="Gérant franchise" class="testi-avatar">
+            <div>
+              <div class="testi-name">Gérant de franchise</div>
+              <div class="testi-role">Restauration rapide — Lyon</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-stack">
+          <div class="testi-card reveal rd1">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="quote">"Audit DDPP le lendemain matin. J'appelle à 22h. SLNP est là à 23h. Cuisine conforme, zéro remarque. Je recommande."</p>
+            <div class="testi-author">
+              <img src="https://picsum.photos/seed/directeur-ops-restaurant/80/80" alt="Directeur restaurant" class="testi-avatar">
+              <div>
+                <div class="testi-name">Directeur de restaurant</div>
+                <div class="testi-role">Restauration rapide — Lyon Nord</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card reveal rd2">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="quote">"Équipe sérieuse, ponctuelle et efficace. Ils connaissent les contraintes d'une cuisine en activité — pas besoin d'expliquer à chaque fois."</p>
+            <div class="testi-author">
+              <img src="https://picsum.photos/seed/responsable-site-lyon/80/80" alt="Responsable de site" class="testi-avatar">
+              <div>
+                <div class="testi-name">Responsable de site</div>
+                <div class="testi-role">Groupe restauration — Lyon</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PROCESSUS ══════════════════════════════════════ -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="process-header">
+        <div class="eyebrow eyebrow--light reveal">Comment ça fonctionne</div>
+        <h2 class="section-title section-title--white reveal rd1">Simple, rapide, opérationnel</h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-step reveal rd1">
+          <div class="step-circle"><span class="step-num">01</span></div>
+          <div class="step-title">Demande de devis en 24h</div>
+          <p class="step-desc">Appelez-nous ou écrivez à contact@slnp.eu. Réponse garantie sous 24 heures avec une proposition adaptée à votre restaurant.</p>
+        </div>
+        <div class="process-step reveal rd2">
+          <div class="step-circle"><span class="step-num">02</span></div>
+          <div class="step-title">Visite de votre cuisine</div>
+          <p class="step-desc">Un responsable SLNP se déplace pour identifier les zones critiques et établir le protocole adapté à votre activité.</p>
+        </div>
+        <div class="process-step reveal rd3">
+          <div class="step-circle"><span class="step-num">03</span></div>
+          <div class="step-title">Contrat de nettoyage continu</div>
+          <p class="step-desc">Interventions nocturnes récurrentes selon le planning défini. Rapport remis après chaque passage. Traçabilité totale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA FINAL + FORMULAIRE ═══════════════════════ -->
+  <section class="cta-section" id="contact">
+    <div class="cta-bg"></div>
+    <div class="cta-overlay"></div>
+    <div class="container">
+      <div class="cta-inner">
+
+        <!-- COL GAUCHE : infos + boutons -->
+        <div>
+          <div class="eyebrow eyebrow--light reveal">Mettons en place votre contrat</div>
+          <h2 class="cta-title reveal rd1">Votre cuisine sera propre et conforme chaque matin à l'ouverture.</h2>
+          <p class="cta-sub reveal rd2">Réponse sous 24h. Déplacement gratuit pour évaluation sur site. Contrat de nettoyage en continu adapté à votre établissement.</p>
+          <div class="cta-btns reveal rd3">
+            <a href="mailto:contact@slnp.eu?subject=Demande%20de%20devis&body=Bonjour%2C%0A%0ANous%20souhaitons%20obtenir%20un%20devis%20pour%20une%20prestation%20de%20nettoyage.%0A%0AEntreprise%20%3A%0AVille%20%3A%0AT%C3%A9l%C3%A9phone%20%3A%0ABesoin%20%3A%0A%0ACordialement%2C" class="btn btn-gold">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Demander un devis en 24h
+            </a>
+            <a href="tel:+33763059643" class="btn btn-ghost">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Contact direct
+            </a>
+            <a href="mailto:contact@slnp.eu?subject=Demande%20de%20mise%20en%20place%20d%27un%20contrat&body=Bonjour%2C%0A%0ANous%20souhaitons%20%C3%A9changer%20au%20sujet%20de%20la%20mise%20en%20place%20d%27un%20contrat%20de%20nettoyage.%0A%0AEntreprise%20%3A%0AVille%20%3A%0AT%C3%A9l%C3%A9phone%20%3A%0ABesoin%20%3A%0A%0ACordialement%2C" class="btn btn-ghost">
+              Mettre en place un contrat
+            </a>
+          </div>
+          <div class="cta-contact-strip reveal rd4">
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <div>
+                <div class="contact-item-label">Téléphone</div>
+                <div class="contact-item-value">
+                  <a href="tel:+33763059643">+33 7 63 05 96 43</a><br>
+                  <a href="tel:+33481910208">+33 4 81 91 02 08</a>
+                </div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <div>
+                <div class="contact-item-label">Email</div>
+                <div class="contact-item-value"><a href="mailto:contact@slnp.eu">contact@slnp.eu</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div>
+                <div class="contact-item-label">Adresse</div>
+                <div class="contact-item-value">100 Rue des Fougères<br>69009 Lyon, France</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COL DROITE : formulaire -->
+        <div class="contact-form-wrap reveal rd2">
+          <div id="formBody">
+            <div class="form-head-title">Parlez-nous de votre besoin</div>
+            <p class="form-head-sub">Décrivez votre établissement et vos besoins en nettoyage. Nous vous recontactons rapidement.</p>
+
+            <form id="contactForm" action="https://formspree.io/f/meevezvn" method="POST" novalidate>
+              <!-- Anti-spam honeypot -->
+              <input type="text" name="_gotcha" style="display:none">
+              <input type="hidden" name="_subject" value="Nouveau message depuis slnp.eu">
+
+              <div class="form-row-2">
+                <div class="form-field">
+                  <label class="form-label" for="f-nom">Nom *</label>
+                  <input class="form-input" type="text" id="f-nom" name="nom" placeholder="Votre nom" required>
+                  <span class="field-error-msg" id="err-nom">Ce champ est requis.</span>
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="f-entreprise">Entreprise *</label>
+                  <input class="form-input" type="text" id="f-entreprise" name="entreprise" placeholder="Nom de l'établissement" required>
+                  <span class="field-error-msg" id="err-entreprise">Ce champ est requis.</span>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-field">
+                  <label class="form-label" for="f-ville">Ville</label>
+                  <input class="form-input" type="text" id="f-ville" name="ville" placeholder="Lyon, Paris…">
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="f-tel">Téléphone</label>
+                  <input class="form-input" type="tel" id="f-tel" name="telephone" placeholder="+33 6 00 00 00 00">
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="f-email">Email *</label>
+                <input class="form-input" type="email" id="f-email" name="email" placeholder="votre@email.fr" required>
+                <span class="field-error-msg" id="err-email">Email invalide.</span>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="f-message">Message *</label>
+                <textarea class="form-textarea" id="f-message" name="message" placeholder="Décrivez vos besoins : type d'établissement, fréquence souhaitée, zones à traiter…" required></textarea>
+                <span class="field-error-msg" id="err-message">Ce champ est requis.</span>
+              </div>
+
+              <button type="submit" class="form-submit" id="formSubmitBtn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Envoyer ma demande
+              </button>
+              <p class="form-note">Réponse garantie sous 24h &bull; Devis gratuit</p>
+            </form>
+          </div>
+
+          <!-- Message de succès -->
+          <div class="form-success-msg" id="formSuccess">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="success-title">Message envoyé avec succès</div>
+            <p class="success-sub">Merci pour votre demande. Nous vous recontactons sous 24 heures pour convenir d'un rendez-vous ou d'une visite sur site.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">SLNP<span>.</span></div>
+          <p class="footer-tagline">Société Lyonnaise de Nettoyage Professionnel. Spécialiste du nettoyage quotidien des cuisines McDonald's et de la restauration rapide depuis 2013 — Lyon.</p>
+        </div>
+        <div>
+          <div class="footer-col-head">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#terrain">Établissements</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#team">Équipe</a></li>
+            <li><a href="#contact">Devis gratuit</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-head">Prestations</div>
+          <ul class="footer-links">
+            <li><a href="#services">Nettoyage grill</a></li>
+            <li><a href="#services">Friteuses</a></li>
+            <li><a href="#services">Plonge &amp; désinfection</a></li>
+            <li><a href="#services">Traçabilité HACCP</a></li>
+            <li><a href="#services">Urgences 24h/24</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-head">Contact</div>
+          <div class="footer-contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <span><a href="tel:+33763059643">+33 7 63 05 96 43</a><br><a href="tel:+33481910208">+33 4 81 91 02 08</a></span>
+          </div>
+          <div class="footer-contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span><a href="mailto:contact@slnp.eu">contact@slnp.eu</a></span>
+          </div>
+          <div class="footer-contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>100 Rue des Fougères<br>69009 Lyon, France</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2024 SLNP &mdash; Société Lyonnaise de Nettoyage Professionnel. Tous droits réservés.</div>
+        <div class="footer-cert"><div class="footer-cert-dot"></div>Certifié HACCP &mdash; Lyon</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══ SCRIPTS ════════════════════════════════════════ -->
+  <script>
+    /* Navbar */
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60), {passive:true});
+
+    /* Hero BG */
+    const bg = document.getElementById('heroBg');
+    window.addEventListener('load', () => bg.classList.add('loaded'));
+    window.addEventListener('scroll', () => {
+      if (scrollY < innerHeight) bg.style.transform = `scale(1) translateY(${scrollY * .18}px)`;
+    }, {passive:true});
+
+    /* Reveal */
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); ro.unobserve(e.target); } });
+    }, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+    /* Compteurs */
+    function counter(el) {
+      const t = parseInt(el.dataset.count), s = el.dataset.suffix||'', d = 1400, t0 = performance.now();
+      const tick = now => {
+        const p = Math.min((now-t0)/d,1), e = 1-Math.pow(1-p,4);
+        el.textContent = Math.round(e*t)+s;
+        if(p<1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+    const co = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ counter(e.target); co.unobserve(e.target); } });
+    }, {threshold:.6});
+    document.querySelectorAll('[data-count]').forEach(el => co.observe(el));
+
+    /* Tilt services */
+    document.querySelectorAll('.svc-card').forEach(c => {
+      c.addEventListener('mousemove', e => {
+        const r = c.getBoundingClientRect();
+        const tx = ((e.clientY-r.top-r.height/2)/r.height)*2.2;
+        const ty = -((e.clientX-r.left-r.width/2)/r.width)*2.2;
+        c.style.transform = `perspective(600px) rotateX(${tx}deg) rotateY(${ty}deg)`;
+        c.style.transition = 'transform .1s,background .32s cubic-bezier(.16,1,.3,1)';
+      });
+      c.addEventListener('mouseleave', () => {
+        c.style.transform = 'perspective(600px) rotateX(0) rotateY(0)';
+        c.style.transition = 'transform .5s cubic-bezier(.16,1,.3,1),background .32s cubic-bezier(.16,1,.3,1)';
+      });
+    });
+
+    /* Formulaire de contact */
+    (function() {
+      const form = document.getElementById('contactForm');
+      if (!form) return;
+      const submitBtn = document.getElementById('formSubmitBtn');
+      const formBody  = document.getElementById('formBody');
+      const formSuccess = document.getElementById('formSuccess');
+
+      /* Validation inline */
+      function validateField(input) {
+        const field = input.closest('.form-field');
+        const err   = field ? field.querySelector('.field-error-msg') : null;
+        let msg = '';
+        if (input.required && !input.value.trim()) {
+          msg = 'Ce champ est requis.';
+        } else if (input.type === 'email' && input.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())) {
+          msg = 'Adresse e-mail invalide.';
+        } else if (input.type === 'tel' && input.value.trim() && !/^[0-9\s\+\-\(\)]{7,}$/.test(input.value.trim())) {
+          msg = 'Numéro de téléphone invalide.';
+        }
+        if (err) { err.textContent = msg; err.style.display = msg ? 'block' : 'none'; }
+        return msg === '';
+      }
+
+      /* Live feedback on blur */
+      form.querySelectorAll('input, textarea').forEach(input => {
+        input.addEventListener('blur', () => validateField(input));
+        input.addEventListener('input', () => {
+          const field = input.closest('.form-field');
+          const err   = field ? field.querySelector('.field-error-msg') : null;
+          if (err && err.style.display === 'block') validateField(input);
+        });
+      });
+
+      /* Submit handler */
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        /* Run all validations */
+        let valid = true;
+        form.querySelectorAll('input:not([type=hidden]):not([name=_gotcha]), textarea').forEach(input => {
+          if (!validateField(input)) valid = false;
+        });
+        if (!valid) return;
+
+        /* Loading state */
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="animation:spin .8s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Envoi en cours…`;
+
+        try {
+          const data = new FormData(form);
+          const res  = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (res.ok) {
+            /* Success */
+            formBody.style.display = 'none';
+            formSuccess.style.display = 'flex';
+            formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            const json = await res.json().catch(() => ({}));
+            const errMsg = (json.errors && json.errors.map(x => x.message).join(', ')) || 'Une erreur est survenue. Veuillez réessayer.';
+            throw new Error(errMsg);
+          }
+        } catch (err) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Envoyer ma demande`;
+
+          /* Show an inline error below the submit button */
+          let globalErr = form.querySelector('.form-global-error');
+          if (!globalErr) {
+            globalErr = document.createElement('p');
+            globalErr.className = 'form-global-error';
+            globalErr.style.cssText = 'color:rgba(239,68,68,.9);font-size:.8rem;margin-top:.75rem;text-align:center;';
+            submitBtn.insertAdjacentElement('afterend', globalErr);
+          }
+          globalErr.textContent = err.message;
+        }
+      });
+    })();
+  </script>
+  <style>
+    @keyframes spin { to { transform:rotate(360deg); } }
+  </style>
+</body>
+</html>
