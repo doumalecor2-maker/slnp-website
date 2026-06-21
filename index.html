@@ -113,7 +113,18 @@
     .nav-inner { display:flex; align-items:center; justify-content:space-between; }
     .nav-logo { display:inline-flex; align-items:center; color:#fff; }
     .nav-logo-img { display:block; height:44px; width:auto; }
-    @media(max-width:768px){ .nav-logo-img{ height:34px; } }
+    .nav-logo-mobile { display:none; }
+    @media(max-width:900px){
+      #navbar { padding:.9rem 0; background:rgba(6,14,28,.72); backdrop-filter:blur(10px); border-bottom-color:rgba(255,255,255,.06); }
+      .nav-logo-desktop { display:none; }
+      .nav-logo-mobile { display:block; height:32px; width:32px; border-radius:6px; }
+      .hero-content { padding-top:5.25rem; }
+    }
+    @media(max-width:768px){
+      .hero-content { padding-top:4.75rem; padding-bottom:2rem; }
+      .hero-eyebrow { font-size:.62rem; letter-spacing:.14em; margin-bottom:1rem; }
+      .hero-sub { font-size:1rem; line-height:1.65; }
+    }
     .nav-links { display:flex; align-items:center; gap:2.5rem; list-style:none; }
     .nav-links a { font-size:.875rem; color:rgba(255,255,255,.65); letter-spacing:.01em; transition:color .2s; }
     .nav-links a:hover { color:#fff; }
@@ -189,7 +200,6 @@
     .hrs-item:hover { color:rgba(255,255,255,.9); }
     .hrs-sep { width:1px; height:1rem; background:rgba(255,255,255,.12); flex-shrink:0; }
     @media(max-width:768px){
-      .hero-content { padding-bottom:2rem; }
       .hrs-label { display:none; }
       .hrs-item { font-size:.75rem; padding:0 1.5rem; }
     }
@@ -503,7 +513,8 @@
     <div class="container">
       <div class="nav-inner">
         <a href="#" class="nav-logo" aria-label="SLNP - Accueil">
-          <img src="images/logo-slnp.png" alt="SLNP" class="nav-logo-img">
+          <img src="images/logo-slnp.png" alt="SLNP" class="nav-logo-img nav-logo-desktop">
+          <img src="images/favicon.png" alt="SLNP" class="nav-logo-mobile">
         </a>
         <ul class="nav-links">
           <li><a href="#about">À propos</a></li>
