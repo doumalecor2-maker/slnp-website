@@ -474,8 +474,8 @@
     ══════════════════════════════════════════════ */
     footer { background:var(--navy-950); border-top:1px solid rgba(255,255,255,.06); padding:4.5rem 0 2.25rem; }
     .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1.4fr; gap:3.5rem; margin-bottom:3.5rem; }
-    .footer-logo { font-family:'Outfit',sans-serif; font-weight:800; font-size:1.25rem; letter-spacing:-.04em; color:#fff; margin-bottom:.875rem; }
-    .footer-logo span { color:var(--gold-400); }
+    .footer-logo { display:inline-flex; align-items:center; margin-bottom:.875rem; }
+    .footer-logo-img { display:block; height:52px; width:auto; }
     .footer-tagline { color:rgba(255,255,255,.32); font-size:.85rem; line-height:1.65; max-width:280px; }
     .footer-col-head { font-family:'Outfit',sans-serif; font-size:.68rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.25); margin-bottom:1.375rem; }
     .footer-links { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
@@ -501,7 +501,7 @@
     <div class="container">
       <div class="nav-inner">
         <a href="#" class="nav-logo" aria-label="SLNP - Accueil">
-          <img src="images/favicon.png" alt="SLNP" class="nav-logo-img">
+          <img src="images/logo-transparent.png" alt="SLNP" class="nav-logo-img">
         </a>
         <ul class="nav-links">
           <li><a href="#about">À propos</a></li>
@@ -1097,7 +1097,9 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="footer-logo">SLNP<span>.</span></div>
+          <div class="footer-logo">
+            <img src="images/logo-transparent.png" alt="SLNP" class="footer-logo-img">
+          </div>
           <p class="footer-tagline">Société Lyonnaise de Nettoyage Professionnel. Spécialiste du nettoyage de cuisines professionnelles pour restaurants, franchises et établissements de restauration rapide depuis 2013 — Lyon.</p>
         </div>
         <div>
